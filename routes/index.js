@@ -9,7 +9,7 @@ router.get('/:id', function(req, res) {
 	 		conn.sendText(req.params.id)
     	})
 
-  res.render('index', { title: 'Express' });
+  res.render('index');
 });
 
 module.exports = router;
