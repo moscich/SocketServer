@@ -72,4 +72,16 @@ var server = ws.createServer(function (conn) {
 
 app.set('websocket', server)
 
+// import the module
+var mdns = require('mdns');
+
+var serviceType = new mdns.ServiceType('TestIOSServer', 'tcp')
+var ad = new mdns.Advertisement(serviceType, 8001, {name:"Test iOS Server", domain:"local."}, function(error, service){
+    console.log("error " + error)
+    console.log("service " + JSON.stringify(service))
+})
+
+
+ad.start();
+
 module.exports = app;
